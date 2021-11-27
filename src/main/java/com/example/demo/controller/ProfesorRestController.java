@@ -36,9 +36,9 @@ public class ProfesorRestController {
 		if(profeServ.findById(profesor.getId()) == null) {
 			profeServ.save(profesor);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
-		}else {
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
+		
+		return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 	}
 	
 	@PostMapping("/login")
@@ -46,9 +46,9 @@ public class ProfesorRestController {
 		Profesor profe = profeServ.checkProfesorLogin(profesor);
 		if(profe != null) {
 			return new ResponseEntity<Void>(HttpStatus.OK);
-		}else {
-			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	}
 	
 	@PutMapping("/update/{id}")
@@ -59,9 +59,9 @@ public class ProfesorRestController {
 			profeDb.setNombre(profesor.getNombre());
 			profeServ.save(profeDb);
 			return new ResponseEntity<>(profeDb, HttpStatus.OK);
-		}else {
-			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	}
 	
 	@DeleteMapping("/delete/{id}")
@@ -70,9 +70,9 @@ public class ProfesorRestController {
 		if(profeDb != null) {
 			profeServ.deleteProfesor(id);
 			return new ResponseEntity<Void>(HttpStatus.OK);			
-		}else {
-			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	}
 	
 	@DeleteMapping("/delete")
