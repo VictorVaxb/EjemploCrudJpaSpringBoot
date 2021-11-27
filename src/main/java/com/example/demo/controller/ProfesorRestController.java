@@ -45,7 +45,7 @@ public class ProfesorRestController {
 	public ResponseEntity<?> login(@RequestBody Profesor profesor){
 		Profesor profe = profeServ.checkProfesorLogin(profesor);
 		if(profe != null) {
-			return new ResponseEntity<>(profe, HttpStatus.OK);
+			return new ResponseEntity<Void>(HttpStatus.OK);
 		}else {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
